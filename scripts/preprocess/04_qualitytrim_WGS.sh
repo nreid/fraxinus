@@ -9,7 +9,7 @@
 #SBATCH --mem=20G
 #SBATCH --partition=general
 #SBATCH --qos=general
-#SBATCH --array=[0-90]%20
+#SBATCH --array=0-10
 
 module load java
 module load Trimmomatic/0.36
