@@ -24,7 +24,7 @@ ADAPT=../../metadata/wgs_adapters.fa
 INDIR=/labs/Wegrzyn/EAB_github/Data
 FASTQS=($(find $INDIR/ -name "Sample*R1*fastq.gz"))
 INFILE=$(echo ${FASTQS[$SLURM_ARRAY_TASK_ID]} | sed 's/.*\///')
-OUTFILE=$(echo $INFILE | sed 's/_S._R1_.*/.fastq.gz/')
+OUTFILE=$(echo $INFILE | sed 's/_S[0-9][0-9]*_R1_.*/.fastq.gz/')
 
 # make trimmed directory if it doesn't exist
 OUTDIR=../../results/trimmed_WGS
