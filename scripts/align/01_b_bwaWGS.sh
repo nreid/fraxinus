@@ -9,7 +9,7 @@
 #SBATCH --mem=5G
 #SBATCH --partition=general
 #SBATCH --qos=general
-#SBATCH --array=[0-32]%20
+#SBATCH --array=0-11
 
 
 hostname
@@ -27,8 +27,9 @@ OUTDIR=../../results/aligned_WGS
 mkdir -p $OUTDIR
 
 # indexed reference genome
-REFERENCE=/labs/Wegrzyn/EAB_github/Genome_Stats/remove_2kb/bwa_index/fraxinus_pennsylvanica_21Jun2018_formatted.fa-filtered
+REFERENCE=/labs/Wegrzyn/EAB_github/Genome_Stats/remove_2kb/fraxinus_pennsylvanica_21Jun2018_formatted.fa-filtered
 
+# fastq array
 FASTQS=($(find $INDIR -name "*1P.fastq.gz"))
 
 FQ1=$(echo ${FASTQS[$SLURM_ARRAY_TASK_ID]} | sed 's/.*\///')
