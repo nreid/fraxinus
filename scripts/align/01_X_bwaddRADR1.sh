@@ -38,15 +38,15 @@ REFERENCE=/labs/Wegrzyn/EAB_github/Genome_Stats/remove_2kb/fraxinus_pennsylvanic
 FASTQS=($(find $INDIR -name "*1.fq.gz" | grep -v "\.rem\."))
 
 # fastq and bam files for this task
-FQ1=$(echo ${FASTQS[$SLURM_ARRAY_TASK_ID]} | sed 's/.*\///')
-OUTFILE=$(echo $FQ1 | sed 's/.1.fq.gz/.bam/')
+FQ1=$(echo ${FASTQS[$SLURM_ARRAY_TASK_ID]})
+OUTFILE=$(echo $FQ1 | sed 's/.1.fq.gz/.bam/' | sed 's/.*\///')
 
 # sample ID, read group
 SAM=$(echo $OUTFILE | sed 's/\..*//')
 RG=$(echo \@RG\\tID:$SAM\\tSM:$SAM)
 
 # alignment pipe
-bwa mem -t 4 -R $RG $REFERENCE $INDIR/$FQ1 $INDIR/$FQ2 | \
+bwa mem -t 4 -R $RG $REFERENCE $FQ1 | \
 samtools view -S -h -u - | \
 samtools sort -T /scratch/$SAM - >$OUTDIR/$OUTFILE
 
