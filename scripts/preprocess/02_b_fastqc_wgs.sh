@@ -32,5 +32,5 @@ mkdir -p $OUTDIR
 FQ1=${FASTQS[$SLURM_ARRAY_TASK_ID]}
 FQ2=$(echo $FQ1 | sed 's/_R1_/_R2_/')
 
-# run fastqc. "*fq" tells it to run on all fastq files in directory "../rawdata/"
+# run fastqc. 
 fastqc -t 6 -o $OUTDIR $FQ1 $FQ2
