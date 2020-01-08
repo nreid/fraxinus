@@ -47,4 +47,6 @@ samblaster | \
 samtools view -S -h -u - | \
 samtools sort -T /scratch/$SAM - >$OUTDIR/$OUTFILE
 
+samtools index $OUTDIR/$OUTFILE
+
 date
