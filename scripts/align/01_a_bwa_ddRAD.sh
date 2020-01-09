@@ -71,7 +71,7 @@ umi_tools extract \
 
 bwa mem -t 4 -R $RG $REFERENCE $P1 $P2 | \
 samtools view -S -h -u - | \
-samtools sort -T /scratch/$SAM - >$OUTDIR/$BAM
+samtools sort -T $SAM - >$OUTDIR/$BAM
 
 samtools index $OUTDIR/$BAM
  
