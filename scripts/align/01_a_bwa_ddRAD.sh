@@ -17,8 +17,6 @@ module load bwa/0.7.17
 module load samtools/1.9
 module load umi_tools/1.0.0
 
-SLURM_ARRAY_TASK_ID=0
-
 #####
 # Define a bunch of variables for this array task
 #####
